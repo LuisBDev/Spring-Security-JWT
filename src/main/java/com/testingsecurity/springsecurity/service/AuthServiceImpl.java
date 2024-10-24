@@ -5,7 +5,6 @@ import com.testingsecurity.springsecurity.config.JwtService;
 import com.testingsecurity.springsecurity.dto.AuthResponse;
 import com.testingsecurity.springsecurity.dto.LoginRequest;
 import com.testingsecurity.springsecurity.dto.RegisterRequest;
-import com.testingsecurity.springsecurity.entity.Role;
 import com.testingsecurity.springsecurity.entity.User;
 import com.testingsecurity.springsecurity.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +31,7 @@ public class AuthServiceImpl implements AuthService {
                 .lastName(registerRequest.getLastName())
                 .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
-                .role(Role.USER)
+//                .role(Role.USER)
                 .build();
         userRepository.save(user);
         String token = jwtService.generateToken(user);
